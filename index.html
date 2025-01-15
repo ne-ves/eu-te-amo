@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eu Te Amo</title>
+    <style>
+        /* Estilos Globais */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #ffe4e1;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-align: center;
+            color: #ff6b81;
+            margin: 50px 0;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .heart {
+            font-size: 5rem;
+            animation: heartbeat 1.5s infinite;
+            color: #ff6b81;
+        }
+
+        /* Slide de Fotos */
+        .photo-slider {
+            width: 80%;
+            margin: 50px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            border: 2px solid #ff6b81;
+            border-radius: 10px;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .slider-content {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .slider-content img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .slider-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .slider-button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1.5rem;
+        }
+
+        .slider-button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <div class="container">
+        <h1>Eu Te Amo ❤️</h1>
+        <div class="heart">💖</div>
+    </div>
+
+    <!-- Slide de Fotos -->
+    <div class="photo-slider" id="photo-slider">
+        <div class="slider-content">
+            <img src="foto1.jpeg" alt="Foto 1">
+            <img src="foto2.jpeg" alt="Foto 2">
+            <img src="foto3.jpeg" alt="Foto 3">
+        </div>
+        <div class="slider-buttons">
+            <button class="slider-button" onclick="prevSlide()">&#9664;</button>
+            <button class="slider-button" onclick="nextSlide()">&#9654;</button>
+        </div>
+    </div>
+
+    <script>
+        // Controle do Carrossel
+        let currentIndex = 0;
+        const sliderContent = document.querySelector('.slider-content');
+        const slides = document.querySelectorAll('.slider-content img');
+
+        function updateSlidePosition() {
+            const offset = currentIndex * -100;
+            sliderContent.style.transform = `translateX(${offset}%)`;
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateSlidePosition();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateSlidePosition();
+        }
+    </script>
+
+</body>
+</html>
